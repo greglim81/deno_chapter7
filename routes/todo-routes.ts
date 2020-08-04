@@ -26,7 +26,7 @@ router.post('/update-todo/:todoId', async (ctx) => {
         await getTodosCollection().updateOne(
             {_id: {$oid: id}},
             {$set: {name: updatedTodoTitle}}
-              );
+        );
             
         ctx.response.redirect('/')
     }
@@ -49,8 +49,8 @@ router.get('/todo/:todoId', async (ctx) => {
     const body = await renderFileToString(Deno.cwd()+'/views/todo.ejs',{
       todoText: todo.name, 
       todoId: todo._id.$oid,
-            error: null      
-});
+      error: null      
+    });
 
     ctx.response.body = body;
 });
@@ -71,9 +71,9 @@ router.post('/add-todo',async (ctx,next) => {
             
     if(newTodoTitle && newTodoTitle.trim().length !== 0){
         const newTodo ={
-name: newTodoTitle! 
-  }; 
-  await getTodosCollection().insertOne(newTodo)
+            name: newTodoTitle! 
+        }; 
+        await getTodosCollection().insertOne(newTodo)
         
         console.log(newTodo);             
         ctx.response.redirect('/')
