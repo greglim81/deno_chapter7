@@ -10,7 +10,7 @@ let todosCollection : Collection<TodoSchema>;
 export function connect(){
     const client = new MongoClient();
 
-client.connectWithUri("mongodb+srv://newuser1:uTSXeKFWdmz2wvWa@cluster0.vxjpr.mongodb.net/?retryWrites=true&w=majority");
+    client.connectWithUri("mongodb+srv://newuser1:uTSXeKFWdmz2wvWa@cluster0.vxjpr.mongodb.net/?retryWrites=true&w=majority");
     
     const db = client.database("todos");
     todosCollection = db.collection<TodoSchema>("todos");
